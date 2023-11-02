@@ -22,7 +22,7 @@ To get started, make sure you have configured your Azure provider. You can use t
 
 
 module "network_security_group" {
-  source                  = "git::https://github.com/opz0/terraform-digitalocean-ssh-key.git?ref=v1.0.0"
+  source                  = ""git::https://github.com/opz0/terraform-azure-network-security-group.git"
   name                    = "app"
   environment             = "test"
   resource_group_name     = module.resource_group.resource_group_name
