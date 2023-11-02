@@ -71,7 +71,7 @@ Make sure to configure the provider block with your Azure credentials or use oth
 ## Examples
 - For detailed examples on how to use this module, please refer to the 'examples' directory within this repository.
 
-  ## Author
+## Author
 Your Name Replace '[License Name]' and '[Your Name]' with the appropriate license and your information. Feel free to expand this README with additional details or usage instructions as needed for your specific use case.
 
 ## License
