@@ -30,7 +30,7 @@ module "vnet" {
 }
 
 module "subnet" {
-  source              = "git::git@github.com:opz0/terraform-azure-subnet.git?ref=master"
+  source              = "https://github.com/opz0/terraform-azure-network-security-group.git?ref=v1.0.0""
   name                = "app"
   environment         = "test"
   resource_group_name = module.resource_group.resource_group_name
@@ -50,7 +50,7 @@ module "subnet" {
 }
 
 module "network_security_group" {
-  source                  = "./../"  # Update with the correct path or Git repository
+  source                  = "https://github.com/opz0/terraform-azure-network-security-group.git?ref=v1.0.0"
   name                    = "app"
   environment             = "test"
   resource_group_name     = module.resource_group.resource_group_name
