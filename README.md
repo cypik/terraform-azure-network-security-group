@@ -20,37 +20,9 @@ To get started, make sure you have configured your Azure provider. You can use t
 
 ```hcl
 
-module "vnet" {
-  source              = "https://github.com/opz0/terraform-azure-network-security-group.git"
-  name                = "app"
-  environment         = "test"
-  resource_group_name = module.resource_group.resource_group_name
-  location            = module.resource_group.resource_group_location
-  address_space       = "10.0.0.0/16"
-}
-
-module "subnet" {
-  source              = "https://github.com/opz0/terraform-azure-network-security-group.git?ref=v1.0.0""
-  name                = "app"
-  environment         = "test"
-  resource_group_name = module.resource_group.resource_group_name
-  location            = module.resource_group.resource_group_location
-  virtual_network_name = module.vnet.vnet_name[0]
-  subnet_names        = ["subnet1"]
-  subnet_prefixes     = ["10.0.1.0/24"]
-  enable_route_table  = true
-  route_table_name    = "default_subnet"
-  routes = [
-    {
-      name           = "rt-test"
-      address_prefix = "0.0.0.0/0"
-      next_hop_type  = "Internet"
-    }
-  ]
-}
 
 module "network_security_group" {
-  source                  = "https://github.com/opz0/terraform-azure-network-security-group.git?ref=v1.0.0"
+  source                  = "git::https://github.com/opz0/terraform-digitalocean-ssh-key.git?ref=v1.0.0"
   name                    = "app"
   environment             = "test"
   resource_group_name     = module.resource_group.resource_group_name
