@@ -3,8 +3,8 @@ provider "azurerm" {
 }
 
 module "resource_group" {
-  source      = "git::git@github.com:opz0/terraform-azure-resource-group.git?ref=master"
-  name        = "app"
+  source      = "git::https://github.com/opz0/terraform-azure-resource-group.git?ref=v1.0.0"
+  name        = "app-51"
   environment = "test"
   location    = "North Europe"
 }
@@ -13,7 +13,7 @@ module "resource_group" {
 ## Virtual Network module call.
 ##-----------------------------------------------------------------------------
 module "vnet" {
-  source              = "git::git@github.com:opz0/terraform-azure-vnet.git?ref=master"
+  source              = "git::https://github.com/opz0/terraform-azure-vnet.git?ref=v1.0.0"
   name                = "app"
   environment         = "test"
   resource_group_name = module.resource_group.resource_group_name
@@ -22,13 +22,13 @@ module "vnet" {
 }
 
 module "subnet" {
-  source = "git::git@github.com:opz0/terraform-azure-subnet.git?ref=master"
+  source = "git::https://github.com/opz0/terraform-azure-subnet.git?ref=v1.0.0"
 
   name                 = "app"
   environment          = "test"
   resource_group_name  = module.resource_group.resource_group_name
   location             = module.resource_group.resource_group_location
-  virtual_network_name = module.vnet.vnet_name[0]
+  virtual_network_name = join("", module.vnet[*].name)
 
   #subnet
   subnet_names    = ["subnet1"]
@@ -48,7 +48,7 @@ module "subnet" {
 
 
 ##-----------------------------------------------------------------------------
-## Network Security Group module call. 
+## Network Security Group module call.
 ##-----------------------------------------------------------------------------
 module "network_security_group" {
   source                  = "./../"
