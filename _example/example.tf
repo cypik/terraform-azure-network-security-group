@@ -4,7 +4,7 @@ provider "azurerm" {
 
 module "resource_group" {
   source      = "git::https://github.com/opz0/terraform-azure-resource-group.git?ref=v1.0.0"
-  name        = "app-51"
+  name        = "app"
   environment = "test"
   location    = "North Europe"
 }
