@@ -18,11 +18,11 @@ This Terraform configuration sets up Azure infrastructure, including a resource 
 
 To get started, make sure you have configured your Azure provider. You can use the following code as a starting point:
 
+# Examples
+
 ```hcl
-
-
 module "network_security_group" {
-  source                  = "git::https://github.com/opz0/terraform-azure-network-security-group.git?ref=v1.0.0"
+  source                  = "git::https://github.com/cypik/terraform-azure-network-security-group.git?ref=v1.0.0"
   name                    = "app"
   environment             = "test"
   resource_group_name     = module.resource_group.resource_group_name
@@ -69,10 +69,10 @@ Make sure to configure the provider block with your Azure credentials or use oth
 - routes (list of objects): The routes for the route table.
 - inbound_rules (list of objects): The inbound rules for the network security group.
 ## Examples
-- For detailed examples on how to use this module, please refer to the 'examples' directory within this repository.
+- For detailed examples on how to use this module, please refer to the '[example](https://github.com/cypik/terraform-azure-network-security-group/blob/master/_example)' directory within this repository.
 
 ## Author
 Your Name Replace '[License Name]' and '[Your Name]' with the appropriate license and your information. Feel free to expand this README with additional details or usage instructions as needed for your specific use case.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/opz0/terraform-azure-network-security-group/blob/readme/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/cypik/terraform-azure-network-security-group/blob/master/LICENSE) file for details.
