@@ -1,6 +1,5 @@
 module "labels" {
   source = "git::https://github.com/cypik/terraform-azure-labels.git?ref=v1.0.0"
-
   name        = var.name
   environment = var.environment
   managedby   = var.managedby
