@@ -13,7 +13,7 @@ variable "environment" {
 
 variable "managedby" {
   type        = string
-  default     = ""
+  default     = "Cypik"
   description = "ManagedBy, eg 'cypik'."
 }
 
