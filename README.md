@@ -23,13 +23,13 @@ To get started, make sure you have configured your Azure provider. You can use t
 
 ```hcl
 module "network_security_group" {
-  source                  = "cypik/network-security-group/azure"
-  version                 = "1.0.1"
-  name                    = "app"
-  environment             = "test"
-  resource_group_name     = module.resource_group.resource_group_name
-  resource_group_location = module.resource_group.resource_group_location
-  subnet_ids              = [module.subnet.default_subnet_id]
+  source                         = "cypik/network-security-group/azure"
+  version                        = "1.0.2"
+  name                           = "app"
+  environment                    = "test"
+  resource_group_name            = module.resource_group.resource_group_name
+  resource_group_location        = module.resource_group.resource_group_location
+  subnet_ids                     = [module.subnet.default_subnet_id]
   inbound_rules = [
     {
       name                       = "ssh"
@@ -73,20 +73,20 @@ This project is licensed under the **MIT** License - see the [LICENSE](https://g
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.6.6 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >=3.87.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.5 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 4.2.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | >=3.87.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | >= 4.2.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_labels"></a> [labels](#module\_labels) | cypik/labels/azure | 1.0.1 |
+| <a name="module_labels"></a> [labels](#module\_labels) | cypik/labels/azure | 1.0.2 |
 
 ## Resources
 
@@ -108,6 +108,7 @@ This project is licensed under the **MIT** License - see the [LICENSE](https://g
 | <a name="input_enable_traffic_analytics"></a> [enable\_traffic\_analytics](#input\_enable\_traffic\_analytics) | Boolean flag to enable/disable traffic analytics. | `bool` | `false` | no |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Set to false to prevent the module from creating any resources. | `bool` | `true` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
+| <a name="input_extra_tags"></a> [extra\_tags](#input\_extra\_tags) | Additional tags (e.g. map(`BusinessUnit`,`XYZ`). | `map(string)` | `{}` | no |
 | <a name="input_flow_log_retention_policy_days"></a> [flow\_log\_retention\_policy\_days](#input\_flow\_log\_retention\_policy\_days) | The number of days to retain flow log records. | `number` | `100` | no |
 | <a name="input_flow_log_retention_policy_enabled"></a> [flow\_log\_retention\_policy\_enabled](#input\_flow\_log\_retention\_policy\_enabled) | Boolean flag to enable/disable retention. | `bool` | `false` | no |
 | <a name="input_flow_log_storage_account_id"></a> [flow\_log\_storage\_account\_id](#input\_flow\_log\_storage\_account\_id) | The id of storage account in which flow logs will be received. Note: Currently, only standard-tier storage accounts are supported. | `string` | `null` | no |
@@ -116,7 +117,7 @@ This project is licensed under the **MIT** License - see the [LICENSE](https://g
 | <a name="input_label_order"></a> [label\_order](#input\_label\_order) | Label order, e.g. sequence of application name and environment `name`,`environment`,'attribute' [`webserver`,`qa`,`devops`,`public`,] . | `list(any)` | <pre>[<br>  "name",<br>  "environment"<br>]</pre> | no |
 | <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | log analytics workspace id to pass it to destination details of diagnosys setting of NSG. | `string` | `null` | no |
 | <a name="input_log_analytics_workspace_resource_id"></a> [log\_analytics\_workspace\_resource\_id](#input\_log\_analytics\_workspace\_resource\_id) | The resource ID of the attached log analytics workspace. | `string` | `null` | no |
-| <a name="input_managedby"></a> [managedby](#input\_managedby) | ManagedBy, eg 'cypik'. | `string` | `"Cypik"` | no |
+| <a name="input_managedby"></a> [managedby](#input\_managedby) | ManagedBy, eg 'info@cypik.com' | `string` | `"info@cypik.com"` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
 | <a name="input_network_watcher_name"></a> [network\_watcher\_name](#input\_network\_watcher\_name) | The name of the Network Watcher. Changing this forces a new resource to be created. | `string` | `null` | no |
 | <a name="input_outbound_rules"></a> [outbound\_rules](#input\_outbound\_rules) | List of objects that represent the configuration of each outbound rule. | `any` | `[]` | no |
