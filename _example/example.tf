@@ -4,7 +4,7 @@ provider "azurerm" {
 
 module "resource_group" {
   source      = "cypik/resource-group/azure"
-  version     = "1.0.1"
+  version     = "1.0.2"
   name        = "app"
   environment = "test"
   location    = "North Europe"
@@ -14,18 +14,20 @@ module "resource_group" {
 ## Virtual Network module call.
 ##-----------------------------------------------------------------------------
 module "vnet" {
-  source              = "cypik/vnet/azure"
-  version             = "1.0.1"
-  name                = "app"
-  environment         = "test"
-  resource_group_name = module.resource_group.resource_group_name
-  location            = module.resource_group.resource_group_location
-  address_space       = "10.0.0.0/16"
+  source                 = "cypik/vnet/azure"
+  version                = "1.0.2"
+  name                   = "app"
+  environment            = "test"
+  resource_group_name    = module.resource_group.resource_group_name
+  location               = module.resource_group.resource_group_location
+  address_space          = "10.0.0.0/16"
+  enable_ddos_pp         = false
+  enable_network_watcher = false
 }
 
 module "subnet" {
   source               = "cypik/subnet/azure"
-  version              = "1.0.1"
+  version              = "1.0.2"
   name                 = "app"
   environment          = "test"
   resource_group_name  = module.resource_group.resource_group_name
@@ -77,9 +79,9 @@ module "network_security_group" {
       access                     = "Allow"
       protocol                   = "*"
       source_address_prefix      = "VirtualNetwork"
-      source_port_range          = "80,443"
+      source_port_range          = "80"
       destination_address_prefix = "0.0.0.0/0"
-      destination_port_range     = "22"
+      destination_port_range     = "80"
       description                = "ssh allowed port"
     }
   ]

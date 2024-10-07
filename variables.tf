@@ -13,8 +13,8 @@ variable "environment" {
 
 variable "managedby" {
   type        = string
-  default     = "Cypik"
-  description = "ManagedBy, eg 'cypik'."
+  default     = "info@cypik.com"
+  description = "ManagedBy, eg 'info@cypik.com'"
 }
 
 variable "repository" {
@@ -37,6 +37,12 @@ variable "resource_group_name" {
 variable "resource_group_location" {
   type        = string
   description = "The Location of the resource group where to create the network security group."
+}
+
+variable "extra_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags (e.g. map(`BusinessUnit`,`XYZ`)."
 }
 
 variable "enabled" {
