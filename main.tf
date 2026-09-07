@@ -1,6 +1,6 @@
 module "labels" {
   source      = "cypik/labels/azure"
-  version     = "1.0.2"
+  version     = "1.0.3"
   name        = var.name
   environment = var.environment
   managedby   = var.managedby
@@ -108,7 +108,7 @@ resource "azurerm_network_watcher_flow_log" "nsg_flow_logs" {
   network_watcher_name      = var.network_watcher_name
   resource_group_name       = var.resource_group_name
   name                      = format("%s-flow_logs", module.labels.id)
-  network_security_group_id = join("", azurerm_network_security_group.nsg[*].id)
+  target_resource_id        = join("", azurerm_network_security_group.nsg[*].id)
   storage_account_id        = var.flow_log_storage_account_id
   retention_policy {
     enabled = var.flow_log_retention_policy_enabled
